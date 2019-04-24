@@ -1,0 +1,8 @@
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP\weekysoft.store\bin\Debug\netstandard2.0\weekysoft.store.deps.json
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP\weekysoft.store\bin\Debug\netstandard2.0\weekysoft.store.dll
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP\weekysoft.store\bin\Debug\netstandard2.0\weekysoft.store.pdb
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP\weekysoft.store\obj\Debug\netstandard2.0\weekysoft.store.csproj.CoreCompileInputs.cache
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP\weekysoft.store\obj\Debug\netstandard2.0\weekysoft.store.AssemblyInfoInputs.cache
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP\weekysoft.store\obj\Debug\netstandard2.0\weekysoft.store.AssemblyInfo.cs
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP\weekysoft.store\obj\Debug\netstandard2.0\weekysoft.store.dll
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP\weekysoft.store\obj\Debug\netstandard2.0\weekysoft.store.pdb
