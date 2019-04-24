@@ -1,0 +1,2 @@
+﻿//create new migration
+add-migration "Initial" -Project MTP -StartupProject MTP.Migration

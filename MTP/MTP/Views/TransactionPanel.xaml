@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="MTP.Views.TransactionPanel"
+             xmlns:converters="clr-namespace:MTP.Converters"
+             Title="{Binding CurrentAccount.Title}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:EqualsConverter x:Key="EqualsConverter" />
+            <converters:MoneyColorConverter x:Key="MoneyColorConverter" />
+            <converters:TransactionColorConverter x:Key="TransactionColorConverter" />
+            <converters:CheckboxConverter x:Key="CheckboxConverter" />
+            <converters:BoolToFontConverter x:Key="BoolToFontConverter" />
+            <converters:BoolToBgColorConverter x:Key="BoolToBgColorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Margin="5,5,5,5" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Style="{StaticResource buttonStyle}" HorizontalOptions="Start" x:Name="btnNew" Command="{Binding AddTransactionCommand}" Grid.Column="0" Image="add.png"></Button>
+            <Label Text="{Binding Total, StringFormat='Total : {0:C}'}" FontSize="20" Grid.Column="1" HorizontalOptions="EndAndExpand" VerticalOptions="Center" TextColor="Black"></Label>
+        </Grid>
+        <ListView Grid.Row="1" x:Name="lvTransactions" HasUnevenRows="True" ItemsSource="{Binding GroupedTransactions}" 
+                  VerticalOptions="StartAndExpand" IsGroupingEnabled="True" SelectedItem="{Binding SelectedTransaction, Mode=TwoWay}">
+            <ListView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid BackgroundColor="#F7E78F">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Text="{Binding Key.HeaderName}" Margin="5,0,5,0"></Label>
+                            <Label Grid.Column="2" Text="{Binding Key.Total, StringFormat='{0:C}'}" Margin="5,0,5,0"></Label>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.GroupHeaderTemplate>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell x:Name="cell">
+                        <Grid Margin="0,0,0,0" BackgroundColor="{Binding Processed, Converter={StaticResource BoolToBgColorConverter}}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"></RowDefinition>
+                                <RowDefinition Height="auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Column="0" Grid.Row="0" Margin="5,0,5,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="0" Padding="0" Spacing="0" Orientation="Horizontal">
+                                    <!--<Switch IsToggled="{Binding Processed}"></Switch>-->
+                                    <!--<Label Text="{Binding TransactionDate, StringFormat='{0:d}'}" FontAttributes="Bold" FontSize="8" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"/> FontAttributes="{Binding Processed, Converter={StaticResource BoolToFontConverter}}"-->
+                                    <Label FontSize="16" Text="{Binding Title}" VerticalTextAlignment="Center" TextColor="Black" HorizontalOptions="Start"/>
+                                </StackLayout>
+                                <Label FontSize="16" Grid.Column="1" Text="{Binding Amount, StringFormat='{0:C}'}" HorizontalOptions="End" VerticalTextAlignment="Center" FontAttributes="{Binding Processed, Converter={StaticResource BoolToFontConverter}}" TextColor="{Binding IsIncome, Converter={StaticResource TransactionColorConverter}}"/>
+                            </Grid>
+                            <Grid Grid.Column="0" Grid.Row="1" Margin="5,0,5,0" IsVisible="{Binding Source={x:Reference lvTransactions}, Path=SelectedItem, 
+                                               Converter={StaticResource EqualsConverter}, 
+                                               ConverterParameter={x:Reference cell}}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout HorizontalOptions="StartAndExpand" Grid.Column="0" Padding="0" Spacing="0">
+                                    <Label Text="{Binding Category}" FontSize="12" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"/>
+                                    <Label Text="{Binding Note}" FontSize="12" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"/>
+                               </StackLayout>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Grid.Column="1" Padding="0" Spacing="3">
+
+                                    <Button Style="{StaticResource buttonStyle}" x:Name="btnProcessed" Command="{Binding BindingContext.ProcessedCommand, Source={x:Reference Name=lvTransactions}}" Image="{Binding Processed, Converter={StaticResource CheckboxConverter}}" CommandParameter="{Binding}" />
+                                    <!--<Switch x:Name="swProcessed" IsToggled="{Binding Processed}" OnColor="Green" Toggled="swProcessed_Toggled"/>-->
+                                    <Button Style="{StaticResource buttonStyle}" x:Name="btnDelete" Command="{Binding BindingContext.DeleteCommand, Source={x:Reference Name=lvTransactions}}" Image="delete.png" CommandParameter="{Binding}" />
+                                    <Button Style="{StaticResource buttonStyle}" x:Name="btnEdit" Command="{Binding BindingContext.EditCommand, Source={x:Reference Name=lvTransactions}}" Image="edit.png" CommandParameter="{Binding}" />
+                                </StackLayout>
+                            </Grid>
+                            <!--<Button x:Name="btnEdit" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Text="Edit"/>-->
+
+
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Grid Grid.Row="2" HorizontalOptions="CenterAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Picker Title="Year" ItemsSource="{Binding Years}" SelectedItem="{Binding SelectedYear}" Grid.Column="0" />
+            <Picker Title="Month" ItemsSource="{Binding Months}" SelectedItem="{Binding SelectedMonth}" Grid.Column="1" />
+            <Picker Title="Category" ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedCategory}" Grid.Column="2" />
+        </Grid>
+        <!--<Grid Margin="0,5,0,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"></RowDefinition>
+            </Grid.RowDefinitions>
+        </Grid>-->
+    </Grid>
+
+</ContentPage>

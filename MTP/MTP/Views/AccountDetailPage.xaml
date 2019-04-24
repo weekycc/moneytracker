@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="MTP.Views.AccountDetailPage">
+    <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Text="Title" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="1" TextColor="Black"/>
+        <Entry x:Name="tbTitle" Text="{Binding CurrentAccount.Title}" Grid.Row="0" Grid.Column="2" TextColor="Black"></Entry>
+        <Button Image="save.png" Style="{StaticResource buttonStyle}" Command="{Binding SaveCommand}" Grid.Row="2" Grid.Column="2" WidthRequest="200"></Button>
+        <Button Image="undo.png" Style="{StaticResource buttonStyle}" Command="{Binding CancelCommand}" Grid.Row="3" Grid.Column="2" WidthRequest="200"></Button>
+    </Grid>
+
+</ContentPage>

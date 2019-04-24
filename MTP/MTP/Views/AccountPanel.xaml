@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:converters="clr-namespace:MTP.Converters"
+             x:Class="MTP.Views.AccountPanel">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:MoneyColorConverter x:Key="MoneyColorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout Orientation="Vertical">
+        <Grid HorizontalOptions="CenterAndExpand" Margin="5,5,5,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Style="{StaticResource buttonStyle}" HorizontalOptions="Start" x:Name="btnNew" Command="{Binding AddAccountCommand}" Grid.Column="0" Image="add.png"></Button>
+            <Label Text="{Binding ProfileBalance, StringFormat='Total : {0:C}'}" FontSize="20" Grid.Column="1" HorizontalOptions="EndAndExpand" VerticalOptions="Center" TextColor="Black"></Label>
+        </Grid>
+        <ListView x:Name="lvAccounts" HasUnevenRows="True" ItemsSource="{Binding Accounts}" SelectedItem="{Binding CurrentAccount}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Margin="5,0,5,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"></RowDefinition>
+                                <RowDefinition Height="auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                                <Label FontSize="20" Text="{Binding Title}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" TextColor="Black" Grid.Column="0" Grid.Row="0"/>
+                            <Label FontSize="20" Text="{Binding Balance, StringFormat='{0:C}'}" HorizontalTextAlignment="End" VerticalTextAlignment="Center" TextColor="Black" Grid.Column="1" Grid.Row="0"/>
+                            <!--<Grid Grid.Column="0" Grid.Row="0" HorizontalOptions="StartAndExpand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                            </Grid>-->
+                            <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="income.png" Grid.Column="0" HorizontalOptions="Start"></Image>
+                                <Label Grid.Column="0" Text="{Binding Income, StringFormat='{0:C}'}" Margin="35,0,0,0" FontSize="16" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" TextColor="Green"/>
+                                <!--<Label Text="-"/>-->
+                                <Image Source="expense.png" Grid.Column="1" HorizontalOptions="Start"></Image>
+                                <Label Grid.Column="1" Text="{Binding Expense, StringFormat='{0:C}'}" Margin="35,0,0,0" FontSize="16" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" TextColor="Red"/>
+                                <!--<Label Text="="/>
+                                <Label Text="{Binding Balance, StringFormat='{0:C}'}" FontSize="16" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" TextColor="{Binding Balance, Converter={StaticResource MoneyColorConverter}}"/>-->
+                            </Grid>
+                            <!--<Button x:Name="btnEdit" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Text="Edit"/>-->
+                            <StackLayout Grid.Column="2" Grid.Row="0">
+                                <!--<Button Style="{StaticResource buttonStyle}" x:Name="btnDelete" Command="{Binding BindingContext.DeleteAccountCommand, Source={x:Reference Name=lvAccounts}}" 
+                                        CommandParameter="{Binding}" Image="delete.png"/>-->
+                                <Button Style="{StaticResource buttonStyle}" x:Name="btnEdit" Command="{Binding BindingContext.EditAccountCommand, Source={x:Reference Name=lvAccounts}}" 
+                                        CommandParameter="{Binding}" Image="edit.png"/>
+                            </StackLayout>
+
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <!--<Grid Margin="0,5,0,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Button x:Name="btnNew" Text="Add Account" Command="AddAccountCommand" VisualElement.WidthRequest="200" Grid.Column="1" Grid.Row="0"></Button>
+        </Grid>-->
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="MTP.Views.ProfilePanel">
+    <Grid VerticalOptions="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Entry Grid.Row="0" Grid.Column="1" Text="{Binding CurrentProfile.Title}" HorizontalTextAlignment="Center"></Entry>
+        <Button Style="{StaticResource buttonStyle}" Grid.Row="1" Grid.Column="1" Text="More Apps..." Command="{Binding MoreAppsCommand}" WidthRequest="200"></Button>
+        <Label Grid.Row="3" Text="{Binding Version}" Grid.Column="1" HorizontalTextAlignment="Center"/>
+    </Grid>
+</ContentPage>

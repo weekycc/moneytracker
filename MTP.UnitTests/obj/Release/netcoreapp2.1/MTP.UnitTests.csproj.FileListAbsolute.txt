@@ -1,0 +1,14 @@
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP.UnitTests\bin\Release\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP.UnitTests\bin\Release\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP.UnitTests\bin\Release\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP.UnitTests\bin\Release\netcoreapp2.1\MTP.UnitTests.deps.json
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP.UnitTests\bin\Release\netcoreapp2.1\MTP.UnitTests.runtimeconfig.json
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP.UnitTests\bin\Release\netcoreapp2.1\MTP.UnitTests.runtimeconfig.dev.json
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP.UnitTests\bin\Release\netcoreapp2.1\MTP.UnitTests.dll
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP.UnitTests\bin\Release\netcoreapp2.1\MTP.UnitTests.pdb
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP.UnitTests\obj\Release\netcoreapp2.1\MTP.UnitTests.csprojAssemblyReference.cache
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP.UnitTests\obj\Release\netcoreapp2.1\MTP.UnitTests.csproj.CoreCompileInputs.cache
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP.UnitTests\obj\Release\netcoreapp2.1\MTP.UnitTests.AssemblyInfoInputs.cache
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP.UnitTests\obj\Release\netcoreapp2.1\MTP.UnitTests.AssemblyInfo.cs
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP.UnitTests\obj\Release\netcoreapp2.1\MTP.UnitTests.dll
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP.UnitTests\obj\Release\netcoreapp2.1\MTP.UnitTests.pdb

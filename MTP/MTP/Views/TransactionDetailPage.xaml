@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="MTP.Views.TransactionDetailPage"
+             xmlns:converters="clr-namespace:MTP.Converters"
+             xmlns:customControl="clr-namespace:EntryAutoComplete;assembly=EntryAutoComplete">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ToggleColorConverter x:Key="ToggleColorConverter" />
+            <converters:ToggleButtonSelectedColorConverter x:Key="ToggleButtonSelectedColorConverter" />
+            <converters:TransactionColorConverter x:Key="TransactionColorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Text="Title" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="1" TextColor="Black"/>
+        <Entry x:Name="tbTitle" Text="{Binding CurrentTransaction.Title}" Grid.Row="0" Grid.Column="2" TextColor="Black"></Entry>
+        <Button Style="{StaticResource buttonStyle}" Grid.Row="0" Grid.Column="3" Command="{Binding SelectTitleCommand}" Image="find.png"></Button>
+        <Label Text="Category" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Grid.Row="1" Grid.Column="1" TextColor="Black"/>
+        <!--<customControl:EntryAutoComplete
+            Placeholder="Category..." 
+            ItemsSource="{Binding Categories}" Margin="5"
+            SearchText="{Binding CurrentTransaction.Category}" AbsoluteLayout.LayoutBounds="1.0,1.0,-1,-1" AbsoluteLayout.LayoutFlags="PositionProportional"
+            MaximumVisibleElements="5" Grid.Row="1" Grid.Column="2"/>-->
+            <Entry x:Name="tbCategory" Grid.Row="1" Grid.Column="2" Text="{Binding CurrentTransaction.Category, Mode=TwoWay}" TextColor="Black"></Entry>
+            <!--<Picker Title="Category" ItemsSource="{Binding Categories}" SelectedItem="{Binding CurrentTransaction.Category}"/>-->
+        <Button Style="{StaticResource buttonStyle}" Grid.Row="1" Grid.Column="3" Command="{Binding SelectCategoryCommand}" Image="find.png"></Button>
+        <!--<Grid Grid.Row="1" Grid.Column="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="45"/>
+            </Grid.ColumnDefinitions>
+        </Grid>-->
+        <Label Text="Date" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Grid.Row="2" Grid.Column="1" TextColor="Black"/>
+        <DatePicker Date="{Binding CurrentTransaction.TransactionDate}" Grid.Row="2" Grid.Column="2"/>        
+        <!--<Entry x:Name="tbDate" Text="{Binding CurrentTransaction.TransactionDate}" Grid.Row="2" Grid.Column="2" TextColor="Black"></Entry>-->
+        <Label Text="Amount" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Grid.Row="3" Grid.Column="1" TextColor="Black"/>
+        <Entry x:Name="tbAmount" Keyboard="Numeric" Text="{Binding CurrentTransaction.Amount}" Grid.Row="3" Grid.Column="2" TextColor="{Binding Source={x:Reference swIncome}, Path=IsToggled, Converter={StaticResource ToggleColorConverter}}" ></Entry>
+        <!--TextColor="{Binding CurrentTransaction.Type, Converter={StaticResource TransactionColorConverter}}" -->
+        <!--TextColor="{Binding Source={x:Reference swIncome}, Path=IsToggled, Converter={StaticResource ToggleColorConverter}}" -->
+        <StackLayout Orientation="Horizontal" Grid.Row="4" Grid.Column="2" HorizontalOptions="CenterAndExpand">
+            <!--<Button Text="Expense" Command="{Binding TxTypeChangedCommand}" CommandParameter="-1" BackgroundColor="{Binding CurrentTransaction.Type, Converter={StaticResource ToggleButtonSelectedColorConverter}, ConverterParameter=-1}" Style="{StaticResource buttonStyle}"></Button>
+            <Button Text="Income" Command="{Binding TxTypeChangedCommand}" CommandParameter="1" BackgroundColor="{Binding CurrentTransaction.Type, Converter={StaticResource ToggleButtonSelectedColorConverter}, ConverterParameter=1}" Style="{StaticResource buttonStyle}"></Button>
+            <Button Text="Trade" Command="{Binding TxTypeChangedCommand}" CommandParameter="0" BackgroundColor="{Binding CurrentTransaction.Type, Converter={StaticResource ToggleButtonSelectedColorConverter}, ConverterParameter=0}" Style="{StaticResource buttonStyle}"></Button>-->
+            <Label Text="Expense"/>
+            <!--<Picker Title="Transaction Type" ItemsSource="{Binding TransactionTypes}" ItemDisplayBinding="Value" SelectedItem="{Binding CurrentTransaction.Type}" />-->
+            <Switch x:Name="swIncome" IsToggled="{Binding CurrentTransaction.IsIncome}" OnColor="Green" />
+              <!--BackgroundColor="{Binding Source={x:Reference swIncome}, Path=IsToggled, Converter={StaticResource ToggleColorConverter}}"-->
+            <Label Text="Income"></Label>
+        </StackLayout>
+        <Label Text="Processed" VerticalTextAlignment="Start" HorizontalTextAlignment="Start" Grid.Row="5" Grid.Column="1" TextColor="Black"/>
+        <Switch x:Name="swProcessed" HorizontalOptions="CenterAndExpand" Grid.Row="5" Grid.Column="2" IsToggled="{Binding CurrentTransaction.Processed}" OnColor="Green"  />
+        <Label Text="Note" VerticalTextAlignment="Start" HorizontalTextAlignment="Start" Grid.Row="6" Grid.Column="1" TextColor="Black"/>
+        <Editor x:Name="tbNote" Text="{Binding CurrentTransaction.Note}" Grid.Row="6" Grid.Column="2" TextColor="Black" HeightRequest="100"></Editor>
+        <Button Image="save.png" Style="{StaticResource buttonStyle}" Command="{Binding SaveCommand}" Grid.Row="8" Grid.Column="2" WidthRequest="200"></Button>
+        <Button Image="undo.png" Style="{StaticResource buttonStyle}" Command="{Binding CancelCommand}" Grid.Row="9" Grid.Column="2" WidthRequest="200"></Button>
+    </Grid>
+</ContentPage>

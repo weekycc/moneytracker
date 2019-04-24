@@ -1,0 +1,16 @@
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP.Migration\bin\Release\netcoreapp2.1\MTP.Migration.deps.json
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP.Migration\bin\Release\netcoreapp2.1\MTP.Migration.runtimeconfig.json
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP.Migration\bin\Release\netcoreapp2.1\MTP.Migration.runtimeconfig.dev.json
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP.Migration\bin\Release\netcoreapp2.1\MTP.Migration.dll
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP.Migration\bin\Release\netcoreapp2.1\MTP.Migration.pdb
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP.Migration\bin\Release\netcoreapp2.1\MTP.dll
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP.Migration\bin\Release\netcoreapp2.1\weekysoft.store.dll
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP.Migration\bin\Release\netcoreapp2.1\MTP.pdb
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP.Migration\bin\Release\netcoreapp2.1\weekysoft.store.pdb
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP.Migration\obj\Release\netcoreapp2.1\MTP.Migration.csprojAssemblyReference.cache
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP.Migration\obj\Release\netcoreapp2.1\MTP.Migration.csproj.CoreCompileInputs.cache
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP.Migration\obj\Release\netcoreapp2.1\MTP.Migration.AssemblyInfoInputs.cache
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP.Migration\obj\Release\netcoreapp2.1\MTP.Migration.AssemblyInfo.cs
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP.Migration\obj\Release\netcoreapp2.1\MTP.Migration.csproj.CopyComplete
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP.Migration\obj\Release\netcoreapp2.1\MTP.Migration.dll
+C:\Users\weekycc\Source\Repos\MoneyTracker\MTP\MTP.Migration\obj\Release\netcoreapp2.1\MTP.Migration.pdb
